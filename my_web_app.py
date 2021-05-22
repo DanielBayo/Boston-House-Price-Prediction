@@ -10,24 +10,27 @@ import pickle
 from PIL import Image
 from sklearn.tree import DecisionTreeRegressor
 
-
 st.header("Predicting Selling Price of Boston House")
+
+
+
 st.write("""
-Created by Daniel Bayo Ayangbile
+Created By: Daniel Bayo Ayangbile
+
 This is a Streamlit web app created so users could predict the selling price of their home. 
 
-Use the sidebar to select input features.
+Use the sidebar to provide information about your house and the click the predict button.
 """)
-st.image(Image.open('boston_house.png'), width = 500)
+st.image(Image.open('boston_house.jpg'), width = 400)
 
-st.sidebar.header('User Input Features')
+st.sidebar.header('Welcome! Please input your details below')
 
 def main():
-    title=st.selectbox("Title",("Mr.","Mrs.","Miss."))
-    name=st.text_input("Name of Buyer")
-    no_rm=st.slider("Number of Rooms in the House",1,10,1)
-    poverty_level=st.slider("Neighborhood poverty Level(%)",2,40,1)
-    student_teacher_ratio=st.slider("Ratio of Student to Teacher in Nearby School",10,25,1)
+    title=st.sidebar.selectbox("Title",("Mr.","Mrs.","Miss."))
+    name=st.sidebar.text_input("Name of Buyer","Type here")
+    no_rm=st.sidebar.slider("Number of Rooms in the House",1,10,1)
+    poverty_level=st.sidebar.slider("Neighborhood poverty Level(%)",5,100,5)
+    student_teacher_ratio=st.sidebar.slider("Ratio of Student to Teacher in Nearby School",10,25,1)
     data = {"Title":title,"Name":name,"Number of Room":no_rm,"Student_Teacher Ratio":student_teacher_ratio,
             "Poverty_Level":poverty_level}
     
@@ -37,17 +40,17 @@ def main():
 
 
     #Write out input selection
-    st.subheader('User Input (Pandas DataFrame)')
-    st.write(input_df)
+    st.subheader('User Input Table')
+    st.write(features)
 
     #Load in model
     regressor = pickle.load(open('regressor.pkl', 'rb'))
 
     # Apply model to make predictions
     #Displaying your prediction
-    if st.button("Predict"):
+    if st.sidebar.button("Predict"):
         result=regressor.predict(input_data)
-        st.success("Dear {} {} you should consider selling your house at :${}".format(title,name,np.round(result[0])))
+        st.success("Dear {0} {1} you should consider selling your house at :$ {2}".format(title,name,np.round(result[0],0)))
 
 
 
