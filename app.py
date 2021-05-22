@@ -8,7 +8,6 @@ import pandas as pd
 import numpy as np
 import pickle
 from PIL import Image
-from sklearn.tree import DecisionTreeRegressor
 
 st.header("Predicting Selling Price of Boston House")
 
