@@ -1,4 +1,6 @@
-ral]\n\
+mkdir -p ~/.streamlit/
+echo “\
+[general]\n\
 email = \”danielayangbile@gmail.com\”\n\
 “ > ~/.streamlit/credentials.toml
 echo “\
