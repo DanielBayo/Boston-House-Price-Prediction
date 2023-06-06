@@ -28,9 +28,9 @@ st.sidebar.header('Welcome! Please input your details below')
 def main():
     title=st.sidebar.selectbox("Title",("Mr.","Mrs.","Miss."))
     name=st.sidebar.text_input("Name of Buyer","Type here")
-    no_rm=st.sidebar.slider("Number of Rooms in the House",1,10,1)
-    poverty_level=st.sidebar.slider("Neighborhood poverty Level(%)",5,100,5)
-    student_teacher_ratio=st.sidebar.slider("Ratio of Student to Teacher in Nearby School",10,25,1)
+    no_rm=st.sidebar.slider("Number of Rooms in the House",3,9,1)
+    poverty_level=st.sidebar.slider("Neighborhood poverty Level(%)",2,38,2)
+    student_teacher_ratio=st.sidebar.slider("Ratio of Student to Teacher in Nearby School",12,22,2)
     data = {"Title":title,"Name":name,"Number of Room":no_rm,"Student_Teacher Ratio":student_teacher_ratio,
             "Poverty_Level":poverty_level}
     
